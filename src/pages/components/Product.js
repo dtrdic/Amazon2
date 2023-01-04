@@ -6,7 +6,7 @@ import Currency from "react-currency-formatter";
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
-function Product({ id, title, price, description, category, image }) {
+function Product({ title, price, description, category, image }) {
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   );
@@ -24,7 +24,7 @@ function Product({ id, title, price, description, category, image }) {
         {Array(rating)
           .fill()
           .map((_, i) => (
-            <StarIcon className="h-5 text-yellow-500" />
+            <StarIcon key={i} className="h-5 text-yellow-500" />
           ))}
       </div>
 
