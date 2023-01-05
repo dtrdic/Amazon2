@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
-function Product({ title, price, description, category, image }) {
+function Product({ id, title, price, description, category, image }) {
   const dispatch = useDispatch();
 
   const [rating] = useState(
@@ -18,6 +18,7 @@ function Product({ title, price, description, category, image }) {
 
   const addItemToBasket = () => {
     const product = {
+      id,
       title,
       price,
       description,

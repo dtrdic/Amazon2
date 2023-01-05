@@ -54,7 +54,7 @@ function CheckoutProduct({
       {/* Buttons on the right of the products */}
       <div className="flex flex-col space-y-2 my-auto justify-self-end">
         <div className="flex justify-between xs:justify-start">
-          <button className="button sm:p-1">
+          <button onClick={removeItemFromBasket} className="button sm:p-1">
             <MinusSmIcon className="h-5 text-black" />
           </button>
           <div className="p-2 whitespace-normal sm:p-1 sm:whitespace-nowrap">

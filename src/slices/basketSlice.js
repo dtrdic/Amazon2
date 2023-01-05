@@ -18,10 +18,10 @@ export const basketSlice = createSlice({
 
       let newBasket = [...state.items];
 
-      if (index >= 0) {
+      if (index > -1) {
         newBasket.splice(index, 1);
       } else {
-        console.warn("doesnt exist");
+        console.warn(`Can't remove product (id: ${action.payload.id})`);
       }
       state.items = newBasket;
     },
