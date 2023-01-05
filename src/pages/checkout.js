@@ -6,11 +6,13 @@ import { selectItems, selectTotal } from "../slices/basketSlice";
 import CheckoutProduct from "./components/CheckoutProduct";
 import { useSession } from "next-auth/client";
 import Currency from "react-currency-formatter";
+import { groupBy } from "lodash";
 
 function Checkout() {
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
   const [sesion] = useSession();
+  const groupedItems = Object.values(groupBy(items, "id"));
 
   return (
     <div className="bg-gray-100">
@@ -31,16 +33,17 @@ function Checkout() {
                 : "Your Shopping Basket"}
             </h1>
 
-            {items.map((item, i) => (
+            {groupedItems.map((group, i) => (
               <CheckoutProduct
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                price={item.price}
-                description={item.description}
-                category={item.category}
-                image={item.image}
-                hasPrime={item.hasPrime}
+                key={i}
+                id={group[0].id}
+                title={group[0].title}
+                price={group[0].price}
+                description={group[0].description}
+                category={group[0].category}
+                image={group[0].image}
+                hasPrime={group[0].hasPrime}
+                quantity={group.length}
               />
             ))}
           </div>
